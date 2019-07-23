@@ -12,8 +12,8 @@ namespace OnfDemo
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly IDatabaService _service;
-        private string _message;
         private List<Product> _products;
+        private string _message;
 
         public string Nom { get; set; }
 
