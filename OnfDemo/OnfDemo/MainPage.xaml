@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:onfDemo="clr-namespace:OnfDemo;assembly=OnfDemo"
+             mc:Ignorable="d"
+             x:Class="OnfDemo.MainPage">
+
+    <ContentPage.BindingContext>
+        <onfDemo:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+
+        <Entry Placeholder="Nom"
+               Text="{Binding Nom}"  />
+
+        <Button Text="Dites bonjour"
+                Command="{Binding DitesBonjourCommand}" />
+
+        <Label Text="{Binding Message}" />
+
+        <DatePicker MaximumDate="2/2/2020"
+                    MinimumDate="2/2/2019" />
+
+        <Switch />
+
+        <Picker ItemsSource="{Binding Options}" />
+
+        <ListView ItemsSource="{Binding Products}"
+                  HasUnevenRows="True"
+                  ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="20,20,20,20">
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource MyLabelStyle}" />
+                            <Label Text="{Binding Cost, StringFormat='{0} $'}"
+                                   HorizontalOptions="End"
+                                   FontSize="22"
+                                   TextColor="Chocolate" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
